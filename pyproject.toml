@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "emachines"
+version = "0.1.0"
+description = "Analytical electromechanical machine design library"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ND", email = "vnaveendeepak@gmail.com" }]
+keywords = [
+    "electric motor", "PMSM", "BLDC", "winding", "electromagnetic",
+    "electromechanical", "motor design", "winding factor", "MMF"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "nbdev",
+    "jupyter",
+]
+docs = [
+    "nbdev",
+    "quarto",
+]
+
+[project.urls]
+Homepage = "https://emdesignlabs.com"
+Repository = "https://github.com/vnaveendeepak/emachines"
+Documentation = "https://vnaveendeepak.github.io/emachines"
+
+[tool.hatch.build.targets.wheel]
+packages = ["emachines"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--tb=short"
