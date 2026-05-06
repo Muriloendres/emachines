@@ -9,7 +9,7 @@ description = "Analytical electromechanical machine design library"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "ND", email = "vnaveendeepak@gmail.com" }]
+authors = [{ name = "ND", email = "NaveenDeepak@gmail.com" }]
 keywords = [
     "electric motor", "PMSM", "BLDC", "winding", "electromagnetic",
     "electromechanical", "motor design", "winding factor", "MMF"
@@ -45,8 +45,8 @@ docs = [
 
 [project.urls]
 Homepage = "https://emdesignlabs.com"
-Repository = "https://github.com/vnaveendeepak/emachines"
-Documentation = "https://vnaveendeepak.github.io/emachines"
+Repository = "https://github.com/NaveenDeepak/emachines"
+Documentation = "https://NaveenDeepak.github.io/emachines"
 
 [tool.hatch.build.targets.wheel]
 packages = ["emachines"]
