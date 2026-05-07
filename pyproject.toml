@@ -7,7 +7,7 @@ name = "emachines"
 version = "0.1.0"
 description = "Analytical electromechanical machine design library"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "ND", email = "NaveenDeepak@gmail.com" }]
 keywords = [
@@ -21,6 +21,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Scientific/Engineering :: Mathematics",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
