@@ -10,6 +10,20 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - `emachines.winding.mmf`: MMF harmonic spectrum
 - PyPI registration
 
+## [0.2.0] — 2026-05-08
+### Added
+- `emachines.magnetics.electrical_steel`: `SteelGrade` dataclass, `SteelDatabase` with
+  Voestalpine Excel and ThyssenKrupp/SURA pickle loaders, LRU-cached `.load()`,
+  `SAMPLE_BH` and `SAMPLE_LOSS` reference data for M-19 / M-36
+- `emachines.magnetics.iron_loss`: `fit_bertotti`, `fit_steinmetz`,
+  `fit_modified_steinmetz`, `fit_loss_model` dispatcher for curve-fitting loss data
+- `pandas>=1.5` added as an explicit runtime dependency
+- 36 passing tests, 4 xfailed (FSCW — pending star-of-slots migration)
+
+### Changed
+- `emdesigner/pages/electrical_steel.py` refactored to use `emachines` — all inline
+  loss model functions and material loaders removed from the web app
+
 ## [0.1.0] — 2026-05-07
 ### Added
 - `emachines.winding.factors`: pitch factor (kp), distribution factor (kd), winding factor (kw)
