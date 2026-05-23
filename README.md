@@ -184,6 +184,8 @@ docker run --rm -v "$(pwd):/src" -w /src python:3.12-slim bash -c "
 "
 ```
 
+> **Note:** Pass credentials inside the `bash -c` string (not via Docker `-e` flags) — this avoids interactive token prompts.
+
 Replace `<your-token>` with your PyPI API token and `<version>` with the version in `pyproject.toml` (e.g. `0.4.0`).
 
 Steps before running:

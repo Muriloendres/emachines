@@ -2,14 +2,207 @@
 
 Thank you for contributing to emachines! This document explains how we work together to build this project collaboratively.
 
-## Getting Started
+## Getting Started (Using Docker)
 
-1. **Fork or clone** the repository
-2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
-3. **Make your changes** with clear, focused commits
-4. **Push your branch** and open a Pull Request
-5. **Wait for review** and address any feedback
-6. **Merge** once approved by the maintainer
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/NaveenDeepak/emachines.git
+   cd emachines
+   ```
+
+2. **Set up Docker environment** (see [SETUP.md](./SETUP.md))
+   ```bash
+   docker-compose up
+   # Then open http://localhost:8888 in your browser
+   ```
+
+3. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Develop in Jupyter notebooks** (see section below)
+
+5. **Push your branch** and open a Pull Request
+
+6. **Wait for review** and address any feedback
+
+7. **Merge** once approved by the maintainer
+
+### ✅ Why Docker?
+
+Docker ensures **everyone has the exact same environment**:
+- ✓ Same Python version (3.10)
+- ✓ Same nbdev installation
+- ✓ Same dependencies and versions
+- ✓ Same JupyterLab setup
+- ✓ Works on macOS, Windows, and Linux identically
+
+**Setup takes 2 minutes:** `docker-compose up` and you're done! 🚀
+
+## Developing with nbdev
+
+This project uses **nbdev** for notebook-driven development. This means:
+- Code and documentation live together in Jupyter notebooks
+- Easy to explain logic and reasoning
+- Tests are embedded in notebooks
+- Python modules are auto-generated from notebooks
+
+### Notebook Structure
+
+All development happens in `nbs/` directory:
+
+```
+nbs/
+├── 00_core.ipynb           # Core functionality
+├── 01_utilities.ipynb      # Utility functions
+├── index.ipynb             # Documentation/overview
+└── README.ipynb            # Setup and usage guide
+```
+
+Each notebook corresponds to a Python module in `/emachines/`.
+
+### How to Develop a Feature
+
+1. **Open JupyterLab** (automatically running with `docker-compose up`)
+2. **Navigate to `nbs/` folder**
+3. **Create or edit a notebook** (e.g., `02_my_feature.ipynb`)
+4. **Add cells with code and documentation**
+   ```python
+   # Cell 1: Imports
+   import numpy as np
+   from emachines.core import BaseClass
+   
+   # Cell 2: Implementation
+   def my_function(x: float) -> float:
+       """
+       My function description.
+       
+       Args:
+           x: Input value
+           
+       Returns:
+           Processed value
+       """
+       return x * 2
+   
+   # Cell 3: Tests
+   assert my_function(5) == 10
+   print("✓ Test passed!")
+   
+   # Cell 4: Examples
+   result = my_function(3.14)
+   print(f"Result: {result}")
+   ```
+
+5. **Add directives for nbdev** (special comments)
+   - `#| export` - Export this cell to Python
+   - `#| hide` - Hide from documentation
+   - `#| default_exp module_name` - Set module for exports
+
+### Example nbdev Cell Structure
+
+```python
+#| default_exp core
+
+#| export
+def calculate_winding_factor(slots: int, poles: int) -> float:
+    """
+    Calculate winding factor for electric machine.
+    
+    Args:
+        slots: Number of stator slots
+        poles: Number of poles
+        
+    Returns:
+        Winding factor value
+    """
+    return (slots / (poles * 3))
+
+
+#| hide
+# This is a test cell - hidden from documentation
+assert calculate_winding_factor(36, 4) > 0
+print("✓ Winding factor calculation works")
+```
+
+### Building Python from Notebooks
+
+After editing notebooks, export to Python:
+
+**In container terminal:**
+```bash
+docker-compose exec emachines-dev bash
+nbdev_build_lib
+```
+
+**Or in JupyterLab terminal:**
+```bash
+nbdev_build_lib
+```
+
+This creates/updates Python files in `/emachines/` from your notebooks.
+
+### Running Tests
+
+Tests can be run in three ways:
+
+**1. Inside notebook cells** (best for development)
+```python
+assert result == expected_value
+```
+
+**2. Run all notebook tests**
+```bash
+nbdev_test_nbs
+```
+
+**3. Traditional pytest** (for separate test files)
+```bash
+pytest tests/
+```
+
+### Documentation
+
+Documentation is auto-generated from notebooks:
+- Cell markdown becomes documentation
+- Code becomes examples
+- Tests become validation
+
+**The more detailed your notebooks, the better the documentation!**
+
+### Notebook Conventions
+
+1. **Cell order matters** - Start with imports, then implementation
+2. **Use markdown cells** - Explain your code
+3. **Include examples** - Show how to use functions
+4. **Add tests** - Validate your code works
+5. **Use type hints** - Help readers understand input/output
+6. **Document assumptions** - Explain scientific/mathematical reasoning
+
+### Example PR with nbdev
+
+**Before (notebook in `nbs/01_feature.ipynb`):**
+```
+- Feature code
+- Explanation markdown
+- Working examples
+- Tests validating logic
+```
+
+**After building (`nbdev_build_lib`):**
+```
+- `/emachines/feature.py` - Auto-generated Python module
+- Documentation auto-generated from notebook
+- Tests extracted and ready to run
+```
+
+**Your PR includes:**
+- The notebook (readable, explainable)
+- Auto-generated Python files
+- Clear commit message
+
+---
 
 ## Branch Naming Conventions
 

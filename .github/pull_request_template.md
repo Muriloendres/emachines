@@ -27,6 +27,16 @@ Closes #
 ## Screenshots or Examples (if applicable)
 <!-- If your changes have visual or behavioral changes, add screenshots or examples. -->
 
+## Development Environment Verification
+<!-- Confirm you used Docker and nbdev correctly -->
+
+- [ ] Used Docker setup from [SETUP.md](./SETUP.md) (`docker-compose up`)
+- [ ] Developed in Jupyter notebooks (`.ipynb` files in `nbs/`)
+- [ ] Built library from notebooks (`nbdev_build_lib`)
+- [ ] All auto-generated files are included in commit
+- [ ] Notebook cells are properly documented with markdown
+- [ ] Tests included in notebooks (asserts and examples)
+
 ## Changes Checklist
 <!-- Verify all items before submitting -->
 
@@ -42,6 +52,7 @@ Closes #
 - [ ] No merge conflicts with main branch
 - [ ] No sensitive data (API keys, passwords) in code
 - [ ] Commit messages are clear and descriptive
+- [ ] Pre-commit hooks passed (or manually fixed issues)
 
 ## Breaking Changes
 <!-- If this PR contains breaking changes, describe them here. -->

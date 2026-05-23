@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  emachines-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: emachines-dev
+    ports:
+      - "8888:8888"  # JupyterLab port
+    volumes:
+      - .:/workspace  # Mount entire project directory
+      - emachines-cache:/workspace/.pytest_cache  # Persist cache
+      - emachines-jupyter:/root/.jupyter  # Persist Jupyter config
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    stdin_open: true
+    tty: true
+    command: jupyter lab --ip=0.0.0.0 --allow-root --no-browser
+
+volumes:
+  emachines-cache:
+  emachines-jupyter:
+
+# Usage:
+# docker-compose up                    # Start the container
+# docker-compose exec emachines-dev bash  # Open a terminal in the container
+# docker-compose down                  # Stop the container
