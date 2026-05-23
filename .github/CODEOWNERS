@@ -1,0 +1,12 @@
+# CODEOWNERS
+# This file defines who is responsible for reviewing changes to different parts of the project.
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Overall project ownership - ND reviews all PRs
+* @NaveenDeepak
+
+# Add more specific rules as the project grows
+# Example:
+# /src/data_processing/ @your-github-username
+# /tests/ @your-github-username
+# /docs/ @your-github-username
