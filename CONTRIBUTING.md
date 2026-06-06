@@ -54,23 +54,25 @@ git --version
 
 ## 3. Setting Up Your Environment
 
+Follow **[LOCAL_SETUP.md](./LOCAL_SETUP.md)** for full setup instructions.
+
+The short version — Docker is recommended for environment consistency:
+
 ```bash
-# 1. Fork the repo on GitHub, then clone your fork
+# Clone your fork
 git clone https://github.com/<your-username>/emachines.git
 cd emachines
-
-# 2. Add upstream remote
 git remote add upstream https://github.com/NaveenDeepak/emachines.git
 
-# 3. Install the project with dev dependencies
-pip install -e ".[dev]"
-pip install "nbdev>=3.0.0" "jupyterlab>=4.0.0"
+# Start the container
+docker compose up -d
 
-# 4. Install pre-commit hooks
-pip install pre-commit
+# Open a shell and install pre-commit hooks
+docker compose exec emachines-dev bash
 pre-commit install
 
-# 5. Verify everything works
+# Verify
+nbdev-export
 nbdev-test --do_print
 ```
 

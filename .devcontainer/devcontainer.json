@@ -96,11 +96,6 @@
         "editor.insertSpaces": true,
         "files.trimTrailingWhitespace": true,
         "files.insertFinalNewline": true,
-
-        // Test discovery
-        "python.testing.pytestEnabled": true,
-        "python.testing.pytestArgs": ["tests"],
-        "python.testing.unittestEnabled": false
       }
     }
   },
