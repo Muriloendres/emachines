@@ -46,3 +46,6 @@ KnowledgeBase/
 # isort temp files
 *.isorted
 settings.ini
+
+# Claude AI context file — local only, not for contributors
+CLAUDE.md
